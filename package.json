@@ -5,17 +5,17 @@
   "license": "",
   "scripts": {
     "build": "concurrently \"npm:build:*\"",
-    "postinstall": "remix setup node",
-    "serve": "env-cmd node server/index.js",
     "dev": "concurrently \"npm:dev:*\"",
     "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./app ./server/index.js",
     "test": "jest --passWithNoTests",
+    "serve": "env-cmd node server/index.js",
     "lint:ci": "eslint --ext .ts,.tsx,.js,.jsx ./app ./server/index.js --max-warnings 0",
     "dev:remix": "remix watch",
     "dev:express": "env-cmd -f .env.local node server/index.js",
     "dev:css": "postcss app/styles/index.css -o app/index.css --w",
     "build:css": "postcss app/styles/index.css -o app/index.css --env production",
-    "build:remix": "remix build"
+    "build:remix": "remix build",
+    "postinstall": "remix setup node"
   },
   "dependencies": {
     "@remix-run/express": "^1.1.3",
