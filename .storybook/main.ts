@@ -1,4 +1,4 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 module.exports = {
   stories: ['../app/lib/**/*.stories.@(js|jsx|ts|tsx)'],
