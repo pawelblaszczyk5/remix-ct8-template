@@ -1,31 +1,31 @@
-const path = require("path");
-const express = require("express");
-const compression = require("compression");
-const morgan = require("morgan");
-const { createRequestHandler } = require("@remix-run/express");
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
+const express = require('express');
+const compression = require('compression');
+const morgan = require('morgan');
+const { createRequestHandler } = require('@remix-run/express');
 
 const MODE = process.env.NODE_ENV;
-const BUILD_DIR = path.join(process.cwd(), "server/build");
+const BUILD_DIR = path.join(process.cwd(), 'server/build');
 
 const app = express();
+
 app.use(compression());
 
-app.use(
-  "/build",
-  express.static("static/build", { immutable: true, maxAge: "5y" })
-);
-app.use(express.static("static", { maxAge: "72h" }));
+app.use('/build', express.static('static/build', { immutable: true, maxAge: '5y' }));
+app.use(express.static('static', { maxAge: '72h' }));
 
-app.use(morgan("tiny"));
+app.use(morgan('tiny'));
 app.all(
-  "*",
-  MODE === "production"
-    ? createRequestHandler({ build: require("./build") })
+  '*',
+  MODE === 'production'
+    ? createRequestHandler({ build: require('./build') })
     : (req, res, next) => {
         purgeRequireCache();
-        const build = require("./build");
+        const build = require('./build');
+
         return createRequestHandler({ build, mode: MODE })(req, res, next);
-      }
+      },
 );
 
 app.listen(3000);

@@ -1,21 +1,23 @@
-import { renderToString } from "react-dom/server";
-import { RemixServer } from "remix";
-import type { EntryContext } from "remix";
+import type { EntryContext } from 'remix';
 
-export default function handleRequest(
+import { renderToString } from 'react-dom/server';
+import { RemixServer } from 'remix';
+
+const handleRequest = (
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
-) {
-  const markup = renderToString(
-    <RemixServer context={remixContext} url={request.url} />
-  );
+  remixContext: EntryContext,
+) => {
+  // eslint-disable-next-line testing-library/render-result-naming-convention
+  const markup = renderToString(<RemixServer context={remixContext} url={request.url} />);
 
-  responseHeaders.set("Content-Type", "text/html");
+  responseHeaders.set('Content-Type', 'text/html');
 
-  return new Response("<!DOCTYPE html>" + markup, {
+  return new Response('<!DOCTYPE html>' + markup, {
     status: responseStatusCode,
-    headers: responseHeaders
+    headers: responseHeaders,
   });
-}
+};
+
+export default handleRequest;
