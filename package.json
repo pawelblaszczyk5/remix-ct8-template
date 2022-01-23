@@ -4,7 +4,7 @@
   "description": "",
   "license": "",
   "scripts": {
-    "build": "concurrently \"npm:build:*\"",
+    "build": "npm run build:css && npm run build:remix",
     "dev": "concurrently \"npm:dev:*\"",
     "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./app ./server/index.js",
     "test": "jest --passWithNoTests",
