@@ -1,6 +1,11 @@
-import type { MetaFunction } from 'remix';
+import type { LinksFunction, MetaFunction } from 'remix';
 
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from 'remix';
+import styles from '~/index.css';
+
+export const links: LinksFunction = () => {
+  return [{ rel: 'stylesheet', href: styles }];
+};
 
 export const meta: MetaFunction = () => {
   return { title: 'New Remix App' };
@@ -15,7 +20,7 @@ const App = () => {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="m-2">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

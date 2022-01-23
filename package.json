@@ -4,7 +4,7 @@
   "description": "",
   "license": "",
   "scripts": {
-    "build": "remix build",
+    "build": "concurrently \"npm:build:*\"",
     "postinstall": "remix setup node",
     "serve": "env-cmd node server/index.js",
     "dev": "concurrently \"npm:dev:*\"",
@@ -12,7 +12,10 @@
     "test": "jest --passWithNoTests",
     "lint:ci": "eslint --ext .ts,.tsx,.js,.jsx ./app ./server/index.js --max-warnings 0",
     "dev:remix": "remix watch",
-    "dev:express": "env-cmd -f .env.local node server/index.js"
+    "dev:express": "env-cmd -f .env.local node server/index.js",
+    "dev:css": "postcss app/styles/index.css -o app/index.css --w",
+    "build:css": "postcss app/styles/index.css -o app/index.css --env production",
+    "build:remix": "remix build"
   },
   "dependencies": {
     "@remix-run/express": "^1.1.3",
@@ -22,7 +25,8 @@
     "morgan": "^1.10.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "remix": "^1.1.3"
+    "remix": "^1.1.3",
+    "tailwindcss": "^3.0.15"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.1.3",
@@ -53,7 +57,11 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "babel-loader": "^8.2.3"
+    "babel-loader": "^8.2.3",
+    "postcss": "^8.4.5",
+    "postcss-cli": "^9.1.0",
+    "cssnano": "^5.0.15",
+    "autoprefixer": "^10.4.2"
   },
   "engines": {
     "node": "=16"
