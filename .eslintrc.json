@@ -17,6 +17,7 @@
     "plugin:import/typescript",
     "plugin:storybook/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/strict",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
@@ -47,6 +48,9 @@
       "typescript": {
         "alwaysTryTypes": true
       }
+    },
+    "react": {
+      "version": "detect"
     }
   }
 }
