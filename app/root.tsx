@@ -2,6 +2,7 @@ import type { LinksFunction, MetaFunction } from 'remix';
 
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from 'remix';
 import styles from '~/index.css';
+import { ThemeSetter } from '~/lib/components/ThemeSetter/ThemeSetter';
 
 export const links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: styles }];
@@ -13,14 +14,16 @@ export const meta: MetaFunction = () => {
 
 const App = () => {
   return (
-    <html lang="en">
+    // Supressing warning because of adding class in ThemeSetter
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="m-2">
+      <body>
+        <ThemeSetter />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
