@@ -18,7 +18,7 @@ export const ThemeSetter = () => {
       document.documentElement.classList.remove('dark');
     };
     window.setTheme = (newTheme) => {
-      newTheme === '${Theme.SYSTEM}'
+      newTheme === ${Theme.SYSTEM}
         ? localStorage.removeItem('${THEME_LOCAL_STORAGE_KEY}')
         : localStorage.setItem('${THEME_LOCAL_STORAGE_KEY}', newTheme);
       handleThemeChange();
