@@ -8,7 +8,7 @@ on:
       - completed
 
 jobs:
-  deploy:
+  on-success:
     runs-on: ubuntu-latest
     name: Deploy
     steps:

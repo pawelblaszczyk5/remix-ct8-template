@@ -5,6 +5,6 @@ describe('Button tests', () => {
   test('should render button', () => {
     render(<Button onClick={() => void 0}>Click me</Button>);
 
-    expect(screen.getByRole('button', { name: 'Click me' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Click mes' })).toBeInTheDocument();
   });
 });
