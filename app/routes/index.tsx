@@ -2,7 +2,7 @@ import { Button } from '~/lib/components/Button';
 import { Theme } from '~/lib/enums';
 
 const Index = () => (
-  <div className="m-8 flex h-screen w-screen flex-col items-center justify-center gap-4 bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+  <div className="flex h-screen w-screen flex-col items-center justify-center gap-4 bg-gray-200 p-8 text-gray-800 dark:bg-gray-800 dark:text-gray-200">
     <h1 className="text-5xl font-semibold">Remix CT8 template</h1>
     <h2 className="text-xl">Includes:</h2>
     <ul className="list-disc text-sm">
